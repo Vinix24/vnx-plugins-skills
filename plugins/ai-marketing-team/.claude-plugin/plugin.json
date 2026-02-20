@@ -1,0 +1,9 @@
+{
+  "name": "ai-marketing-team",
+  "version": "0.1.0",
+  "description": "Build a complete AI marketing team in Cowork — 6 specialized roles that work together as one marketing department. From market research to sales scripts, with output you can actually use.",
+  "author": {
+    "name": "Vincent van Deth"
+  },
+  "keywords": ["marketing", "AI", "team", "B2B", "MKB", "content", "strategy", "lead generation"]
+}
