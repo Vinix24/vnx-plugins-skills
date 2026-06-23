@@ -30,6 +30,25 @@ MCP (Model Context Protocol) is de standaardstekker waarmee een AI-agent veilig 
 
 Wil je hiermee aan de slag, dan is dat een echt project (een MCP-server opzetten en koppelen aan een agent zoals Claude of Codex). Dat valt buiten deze repo, maar het is de logische volgende stap als je je eigen tools aan een agent wilt hangen. Vraag het me gerust.
 
+## 5. Agents: AI die zelf stappen zet
+
+Een prompt antwoordt één keer. Een workflow loopt vaste stappen af. Een agent beslist zelf welke stappen nodig zijn, gebruikt je tools, en stopt of vraagt je iets als hij vastloopt.
+
+Stel je een offerte-agent voor, voortbouwend op de offerte-naar-JSON uit de bibliotheek:
+
+1. Ziet een nieuwe offerte binnenkomen in een map of mailbox.
+2. Leest hem uit naar een vast format.
+3. Controleert de sommen met een vaste regel (telt op, checkt de BTW).
+4. Klopt alles? Direct je systeem in. Mist een prijs of klopt een totaal niet? Hij stopt en legt het aan jou voor.
+
+Dat laatste is de kern: de agent doet het saaie werk, jij beslist alleen nog over de uitzonderingen. Geen stapel PDF's meer overtypen, en toch grip, omdat de laatste check menselijk blijft.
+
+Dit is precies het soort systeem dat ik voor bedrijven bouw: een agent op één terugkerende, tijdrovende klus, met vaste regels eromheen en een menselijke eindcontrole. Meetbaar, en als het moet volledig op je eigen machine zodat je data binnen blijft.
+
+Eerlijke verwachting: op vrije, open taken slagen agents nog lang niet altijd. De winst zit in begrensde, herhaalbare klussen, niet in onbewaakte betalingen. Daar zit ook het vak: de grenzen goed zetten.
+
+Benieuwd wat dit voor jouw offertes, mail of documenten zou schelen? advies@vincentvandeth.nl
+
 ---
 
 Vragen over deze hoek? advies@vincentvandeth.nl
