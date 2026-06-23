@@ -4,7 +4,7 @@ Alles wat je tijdens de workshop hebt gezien, om thuis mee aan de slag te gaan. 
 
 ## Wat zit erin
 
-- **`assistent/prompts.md`** — negen kant-en-klare AI-assistenten (sparringpartner, offerte, mail, acquisitie, document-uitlezer, content, structuur, samenvatter, beeld-analist naar JSON), plus de instelling die de AI scherp en eerlijk houdt. Plak ze in ChatGPT, Claude of Gemini, of leg ze één keer vast als Gem/GPT/Project.
+- **`assistent/prompts.md`** — tien kant-en-klare AI-assistenten (sparringpartner, offerte, mail, acquisitie, document-uitlezer, content, structuur, samenvatter, beeld-analist naar JSON, offerte-naar-JSON), plus de instelling die de AI scherp en eerlijk houdt. Plak ze in ChatGPT, Claude of Gemini, of leg ze één keer vast als Gem/GPT/Project.
 - **`website/`** — een kant-en-klaar landingspagina-geraamte. Vul het met je eigen tekst en kleuren, en zet het online. Zie `website/README.md`.
 - **`gevorderd/`** — voor wie al verder is: skills, automatisering met n8n, en MCP.
 

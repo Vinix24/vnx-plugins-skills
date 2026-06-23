@@ -1,6 +1,6 @@
 # Prompt-bibliotheek (workshop 25 juni)
 
-Negen kant-en-klare AI-persona's voor de deelnemers. Elke persona is een prompt die je plakt in ChatGPT, Claude of Gemini, of die je één keer vastlegt als Gem/GPT/Project (dan is het je vaste assistent). De set zit op de pijnpunten van deze zaal: offertes, mail, acquisitie, documenten, content, structuur, samenvatten, en beeld-analyse.
+Tien kant-en-klare AI-persona's voor de deelnemers. Elke persona is een prompt die je plakt in ChatGPT, Claude of Gemini, of die je één keer vastlegt als Gem/GPT/Project (dan is het je vaste assistent). De set zit op de pijnpunten van deze zaal: offertes, mail, acquisitie, documenten, content, structuur, samenvatten, beeld-analyse en offerte-extractie.
 
 Dit is de bron (SSOT). Komt op de workshop-pagina van vincentvandeth.nl met een kopieer-knop per persona, en in de GitHub-repo voor de gevorderden.
 
@@ -238,7 +238,7 @@ MIJN INPUT
 
 ## 9. Beeld-analist (naar JSON)
 
-Leest een afbeelding extreem gedetailleerd uit en geeft alleen een vast JSON-object terug. Handig om beelden te catalogiseren, te vergelijken of opnieuw te laten genereren. Werkt in een model dat afbeeldingen kan lezen (ChatGPT, Gemini, Claude). Het eerste deel zet je in de instructies, het user-deel stuur je met de afbeelding mee.
+Leest een afbeelding extreem gedetailleerd uit en geeft alleen een vast JSON-object terug. Handig om beelden te catalogiseren, te vergelijken of opnieuw te laten genereren. Werkt in een model dat afbeeldingen kan lezen (ChatGPT, Gemini, Claude). Het eerste deel zet je in de instructies, het user-deel stuur je met de afbeelding mee. Bewaar de JSON als herbruikbaar recept, zoals een LUT of preset: pas één veld aan (licht, kleur, stijl) en genereer een consistente variant.
 
 ```
 SYSTEM PROMPT (rol):
@@ -388,9 +388,58 @@ Geen tekst, geen uitleg, geen markdown, alleen pure JSON.
 
 ---
 
+## 10. Offerte-naar-JSON (extractor)
+
+Leest een offerte (tekst, PDF of foto) uit naar een vast JSON-schema. Neemt bedragen letterlijk over, rekent niets uit, en markeert wat onzeker is. De clou: de AI leest, een vaste regel rekent en controleert. Werkt in een model dat documenten of foto's kan lezen.
+
+```
+SYSTEM PROMPT (rol):
+
+Je bent een offerte-naar-JSON extractor.
+Lees de aangeleverde offerte (tekst, PDF of foto) en geef ALLEEN een geldig JSON-object terug volgens het schema.
+Neem alle bedragen en aantallen LETTERLIJK over zoals ze in de offerte staan. Reken niets uit, rond niets af.
+Wat je niet zeker kunt lezen: zet op null en noem het veld in "onzeker". Verzin nooit waarden.
+Geen tekst, geen markdown, alleen JSON.
+
+Schema:
+{
+  "leverancier": { "naam": string|null, "kvk": string|null, "adres": string|null },
+  "offertenummer": string|null,
+  "datum": string|null,
+  "geldig_tot": string|null,
+  "klant": string|null,
+  "valuta": string|null,
+  "regels": [
+    {
+      "omschrijving": string,
+      "aantal": number|null,
+      "eenheid": string|null,
+      "stuksprijs": number|null,
+      "regeltotaal": number|null,
+      "btw_percentage": number|null
+    }
+  ],
+  "subtotaal_excl_btw": number|null,
+  "btw_bedrag": number|null,
+  "totaal_incl_btw": number|null,
+  "betaaltermijn": string|null,
+  "opmerkingen": string|null,
+  "onzeker": [string]
+}
+
+USER PROMPT:
+
+Hier is de offerte. Geef alleen het JSON-object volgens het schema. Reken niets uit, neem bedragen letterlijk over.
+[plak de offertetekst of voeg de PDF/foto toe]
+```
+
+Tip: laat na het uitlezen een vaste controle lopen. Telt de som van de regels op tot het subtotaal, en subtotaal plus BTW tot het totaal? Zo niet, handmatig nakijken.
+
+---
+
 ## Voor de begeleiding
 
 - Elke persona is meteen een Gem/GPT/Project-kandidaat. Dat is je niveau 2-les: een goede prompt één keer vastleggen.
 - De personae met "stel me eerst vragen" (sparringpartner, acquisitie, structuur) laten het doorvragen zien. Wijs daarop.
-- Op de cheat-sheet en de afsluit-slide: één link naar de workshop-pagina waar deze negen staan met een kopieer-knop.
-- De beeld-analist (9) is technischer dan de rest; bewaar 'm voor wie met beeld werkt (Rodney, Next Level Makers) of als bonus voor de gevorderden.
+- Op de cheat-sheet en de afsluit-slide: één link naar de workshop-pagina waar deze tien staan met een kopieer-knop.
+- De beeld-analist (9) en offerte-extractor (10) zijn technischer dan de rest; bewaar ze voor wie met beeld of offertes werkt (Rodney, Next Level Makers, de signmakers) of als bonus voor de gevorderden.
